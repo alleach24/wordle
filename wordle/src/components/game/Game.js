@@ -3,7 +3,7 @@ import useWordle from '../../hooks/useWordle'
 import Grid from './Grid'
 
 export default function Game({ solution }) {
-    const { currentGuess, handleKeyup, guesses, turn, isCorrect } = useWordle(solution)
+    const { currentGuess, handleKeyup, guesses, turn, resetWordle } = useWordle(solution)
 
     useEffect(() => {
         window.addEventListener('keyup', handleKeyup)
@@ -11,11 +11,11 @@ export default function Game({ solution }) {
     }, [handleKeyup])
 
     useEffect(() => {
-        console.log(guesses, turn, isCorrect)
-    }, [guesses, turn, isCorrect])
+        resetWordle() // eslint-disable-next-line
+    }, [solution])
 
   return (
-    <div>
+    <div key={solution}>
         currentGuess = {currentGuess}
         <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />
     </div>

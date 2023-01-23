@@ -4,6 +4,7 @@ import Game from './Game'
 
 export default function Wordle() {
     const { getRandomSolution, verifyCustomSolution } = useGetSolution()
+    // const { resetWordle } = useWordle('')
 
     const [solution, setSolution] = useState(null)
 
@@ -26,7 +27,6 @@ export default function Wordle() {
         }
         setSolution(customSolution)
     }
-
 
 
     return (

@@ -16,6 +16,9 @@ const useWordle = (solution) => {
                 return
             }
             let submittedGuess = handleSubmit()
+            if (submittedGuess === '') {
+                return
+            }
             let formattedGuess = formatGuess(submittedGuess)
             addNewGuess(formattedGuess)
 
@@ -67,7 +70,16 @@ const useWordle = (solution) => {
         resetKeys()
     }
 
-    return { currentGuess, handleKeyup, guesses, turn, isCorrect }
+
+    const resetWordle = () => {
+        console.log("resetting Wordle")
+        setTurn(0)
+        setGuesses([...Array(6)])
+        setIsCorrect(false)
+    }
+
+
+    return { currentGuess, handleKeyup, guesses, turn, isCorrect, resetWordle }
 }
 
 export default useWordle
