@@ -1,41 +1,41 @@
 import React from 'react'
 
-export default function Keyboard() {
+export default function Keyboard({ usedKeys }) {
   return (
     <div>
         <div id="keyboard-container">
             <div className="keyboard-row">
-                <button className="keyboard-button">q</button>
-                <button className="keyboard-button">w</button>
-                <button className="keyboard-button">e</button>
-                <button className="keyboard-button">r</button>
-                <button className="keyboard-button">t</button>
-                <button className="keyboard-button">y</button>
-                <button className="keyboard-button">u</button>
-                <button className="keyboard-button">i</button>
-                <button className="keyboard-button">o</button>
-                <button className="keyboard-button">p</button>
+                <button className={`keyboard-button ${usedKeys['q']}`}>q</button>
+                <button className={`keyboard-button ${usedKeys['w']}`}>w</button>
+                <button className={`keyboard-button ${usedKeys['e']}`}>e</button>
+                <button className={`keyboard-button ${usedKeys['r']}`}>r</button>
+                <button className={`keyboard-button ${usedKeys['t']}`}>t</button>
+                <button className={`keyboard-button ${usedKeys['y']}`}>y</button>
+                <button className={`keyboard-button ${usedKeys['u']}`}>u</button>
+                <button className={`keyboard-button ${usedKeys['i']}`}>i</button>
+                <button className={`keyboard-button ${usedKeys['o']}`}>o</button>
+                <button className={`keyboard-button ${usedKeys['p']}`}>p</button>
             </div>
             <div className="keyboard-row">
-                <button className="keyboard-button">a</button>
-                <button className="keyboard-button">s</button>
-                <button className="keyboard-button">d</button>
-                <button className="keyboard-button">f</button>
-                <button className="keyboard-button">g</button>
-                <button className="keyboard-button">h</button>
-                <button className="keyboard-button">j</button>
-                <button className="keyboard-button">k</button>
-                <button className="keyboard-button">l</button>
+                <button className={`keyboard-button ${usedKeys['a']}`}>a</button>
+                <button className={`keyboard-button ${usedKeys['s']}`}>s</button>
+                <button className={`keyboard-button ${usedKeys['d']}`}>d</button>
+                <button className={`keyboard-button ${usedKeys['f']}`}>f</button>
+                <button className={`keyboard-button ${usedKeys['g']}`}>g</button>
+                <button className={`keyboard-button ${usedKeys['h']}`}>h</button>
+                <button className={`keyboard-button ${usedKeys['j']}`}>j</button>
+                <button className={`keyboard-button ${usedKeys['k']}`}>k</button>
+                <button className={`keyboard-button ${usedKeys['l']}`}>l</button>
             </div>
             <div className="keyboard-row">
                 <button className="keyboard-button">Enter</button>
-                <button className="keyboard-button">z</button>
-                <button className="keyboard-button">x</button>
-                <button className="keyboard-button">c</button>
-                <button className="keyboard-button">v</button>
-                <button className="keyboard-button">b</button>
-                <button className="keyboard-button">n</button>
-                <button className="keyboard-button">m</button>
+                <button className={`keyboard-button ${usedKeys['z']}`}>z</button>
+                <button className={`keyboard-button ${usedKeys['x']}`}>x</button>
+                <button className={`keyboard-button ${usedKeys['c']}`}>c</button>
+                <button className={`keyboard-button ${usedKeys['v']}`}>v</button>
+                <button className={`keyboard-button ${usedKeys['b']}`}>b</button>
+                <button className={`keyboard-button ${usedKeys['n']}`}>n</button>
+                <button className={`keyboard-button ${usedKeys['m']}`}>m</button>
                 <button className="keyboard-button">Del</button>
             </div>
         </div>

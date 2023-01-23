@@ -7,6 +7,7 @@ const useWordle = (solution) => {
     const [turn, setTurn] = useState(0);
     const [guesses, setGuesses] = useState([...Array(6)])
     const [isCorrect, setIsCorrect] = useState(false)
+    const [usedKeys, setUsedKeys] = useState({}) // {a:'green', b:'yellow'}
 
     
     const handleKeyup = ({ key }) => {
@@ -68,6 +69,24 @@ const useWordle = (solution) => {
         })
         setTurn((prevTurn) => { return prevTurn+1 })
         resetKeys()
+        setUsedKeys((prevUsedKeys) => {
+            let newKeys = {...prevUsedKeys}
+            formattedGuess.forEach((letterDict, index) => {
+                const currentKeyColor = newKeys[letterDict.letter]
+                if (letterDict.color === 'green') {
+                    newKeys[letterDict.letter] = 'green-key'
+                    return
+                } 
+                if (letterDict.color === 'yellow' && currentKeyColor !== 'green-key') {
+                    newKeys[letterDict.letter] = 'yellow-key'
+                    return
+                }
+                if (letterDict.color === 'gray' && currentKeyColor !== 'green-key' && currentKeyColor !== 'yellow-key') {
+                    newKeys[letterDict.letter] = 'gray-key'
+                }
+            })
+            return newKeys
+        })
     }
 
 
@@ -76,10 +95,11 @@ const useWordle = (solution) => {
         setTurn(0)
         setGuesses([...Array(6)])
         setIsCorrect(false)
+        setUsedKeys({})
     }
 
 
-    return { currentGuess, handleKeyup, guesses, turn, isCorrect, resetWordle }
+    return { currentGuess, handleKeyup, guesses, turn, isCorrect, resetWordle, usedKeys }
 }
 
 export default useWordle
