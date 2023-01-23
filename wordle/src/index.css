@@ -42,26 +42,84 @@ code {
   display: block;
   width: 60px;
   height: 60px;
-  border: 1px solid #d3d6da;
+  border: 2px solid #d3d6da;
   margin: 4px;
   text-align: center;
   line-height: 60px;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 2.5em;
+  font-size: 2rem;
 }
 .row > div.green {
-  background: #6aaa64;
-  border-color: #6aaa64;
-  color: #ffffff;
+  border-color:#565758;
+  --background: #6aaa64;
+  --border-color: #6aaa64;
+  animation: Flip 700ms linear forwards;
 }
 .row > div.yellow {
-  background: #c9b458;
-  border-color: #c9b458;
-  color: #ffffff;
+  border-color:#565758;
+  --background: #c9b458;
+  --border-color: #c9b458;
+  animation: Flip 700ms linear forwards;
 }
 .row > div.gray {
-  background: #787c7e;
-  border-color: #787c7e;
-  color: #ffffff;
+  border-color:#565758;
+  --background: #787c7e;
+  --border-color: #787c7e;
+  animation: Flip 700ms linear forwards;
+}
+.row.current > div.filled {
+  animation: PopIn forwards;
+  animation-duration: 100ms;
+  border-color: #565758;
+}
+.row > div:nth-child(2) {
+  animation-delay: 350ms;
+}
+.row > div:nth-child(3) {
+  animation-delay: 700ms;
+}
+.row > div:nth-child(4) {
+  animation-delay: 1050ms;
+}
+.row > div:nth-child(5) {
+  animation-delay: 1400ms;
+} 
+
+
+
+/*animations*/
+@keyframes PopIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+  @keyframes Flip {
+    0% {
+      transform: rotateX(0);
+      border-color:#565758;
+    }
+    49% {
+      transform: rotateX(-90deg);
+      background: #ffffff;
+      border-color: #565758;
+      color: #000000;
+    }
+    51% {
+      transform: rotateX(-90deg);
+      background: var(--background);
+      border-color: var(--border-color);
+      color: #ffffff;
+    }
+    100% {
+      transform: rotateX(0);
+      background: var(--background);
+      border-color: var(--border-color);
+      color: #ffffff;
+    }
 }

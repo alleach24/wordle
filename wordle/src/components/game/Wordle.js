@@ -35,7 +35,6 @@ export default function Wordle() {
             {/* take away the button working on pressing enter */}
             <button onClick={setupRandomGame}>New Game</button>
             <button onClick={setupCustomGame}>Custom Game</button>
-            {solution && <div>Solution = {solution}</div>}
             {solution && <Game solution={solution} />}
         </div>
     )

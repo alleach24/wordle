@@ -16,7 +16,6 @@ export default function Game({ solution }) {
 
   return (
     <div key={solution}>
-        currentGuess = {currentGuess}
         <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />
     </div>
 
