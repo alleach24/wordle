@@ -33,7 +33,12 @@ const useKeys = () => {
     // add screen keyboard functionality
 
 
-    return { currentGuess, handleKeyboardKey, handleSubmit }
+    const resetKeys = () => {
+        setCurrentGuess('')
+    }
+
+
+    return { currentGuess, handleKeyboardKey, handleSubmit, resetKeys }
 }
 
 export default useKeys

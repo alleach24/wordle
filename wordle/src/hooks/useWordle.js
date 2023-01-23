@@ -2,20 +2,32 @@ import { useState } from "react"
 import useKeys from "./useKeys";
 
 const useWordle = (solution) => {
-    const {currentGuess, handleKeyboardKey, handleSubmit} = useKeys()
+    const {currentGuess, handleKeyboardKey, handleSubmit, resetKeys} = useKeys()
 
     const [turn, setTurn] = useState(0);
-    const [guesses, setGuesses] = useState([])
+    const [guesses, setGuesses] = useState([...Array(6)])
     const [isCorrect, setIsCorrect] = useState(false)
 
     
     const handleKeyup = ({ key }) => {
         if (key === 'Enter') {
-            (turn <= 5 ? formatGuess(handleSubmit()) : console.log("No more guesses left"))           
+            if (turn > 5) {
+                console.log("No more guesses left")
+                return
+            }
+            let submittedGuess = handleSubmit()
+            let formattedGuess = formatGuess(submittedGuess)
+            addNewGuess(formattedGuess)
+
+            if (submittedGuess === solution) {
+                setIsCorrect(true)
+            }
+            
         } else {
             handleKeyboardKey(key)
         }        
     }
+
 
     const formatGuess = (guess) => {
         console.log('formatting the guess - ' + guess)
@@ -41,14 +53,21 @@ const useWordle = (solution) => {
             }
         })
 
-        // find any gray letters
-
-        console.log(formattedGuess)
         return formattedGuess
     }
 
 
-    return { currentGuess, handleKeyup }
+    const addNewGuess = (formattedGuess) => {
+        setGuesses((prevGuesses) => {
+            let newGuesses = [...prevGuesses]
+            newGuesses[turn] = formattedGuess
+            return newGuesses
+        })
+        setTurn((prevTurn) => { return prevTurn+1 })
+        resetKeys()
+    }
+
+    return { currentGuess, handleKeyup, guesses, turn, isCorrect }
 }
 
 export default useWordle
