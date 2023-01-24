@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import PossibleSolutions from "./PossibleSolutions"
 import OptimalGuess from "./OptimalGuess"
 import Analysis from "./Analysis"
-import useWordle from "../../hooks/useWordle"
 
-export default function Optimizer({ solution }) {
-    const { guesses } = useWordle(solution)  
+export default function Optimizer({ solution, guesses }) {
 
     const [showPossibleSolutions, setShowPossibleSolutions] = useState(false)
     const [showOptimalGuess, setShowOptimalGuess] = useState(false)

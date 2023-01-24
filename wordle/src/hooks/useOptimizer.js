@@ -1,4 +1,3 @@
-import useWordle from "./useWordle"
 
 
 const useOptimizer = (solution, guesses) => {

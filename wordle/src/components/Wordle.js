@@ -6,6 +6,8 @@ import Optimizer from './optimizer/Optimizer'
 export default function Wordle() {
     const { getRandomSolution, verifyCustomSolution } = useGetSolution()
 
+    const [guesses, setGuesses] = useState([...Array(6)])
+
     const [solution, setSolution] = useState(null)
 
 
@@ -37,10 +39,10 @@ export default function Wordle() {
                     {/* take away the button working on pressing enter */}
                     <button onClick={setupRandomGame}>Random Game</button>
                     <button onClick={setupCustomGame}>Custom Game</button>
-                    {solution && <Game solution={solution} />}
+                    {solution && <Game solution={solution} setGuesses={setGuesses}/>}
                 </div>
                 <div className="Wordle-container">
-                    <Optimizer solution={solution} />
+                    <Optimizer solution={solution} guesses={guesses}/>
                 </div>
             </div>
         </div>

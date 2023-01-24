@@ -1,11 +1,11 @@
 import React from 'react'
-import useOptimizer from '../../hooks/useOptimizer'
+// import useOptimizer from '../../hooks/useOptimizer'
 
 export default function PossibleSolutions(solution, guesses) {
 //   const {} = useOptimizer(solution, guesses)
 
-//   console.log('PossibleSolutions')
-//   console.log(guesses)
+  console.log('PossibleSolutions')
+  console.log(guesses)
     
     return (
         <div>

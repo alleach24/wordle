@@ -65,8 +65,6 @@ const useWordle = (solution) => {
         setGuesses((prevGuesses) => {
             let newGuesses = [...prevGuesses]
             newGuesses[turn] = formattedGuess
-            console.log('useWordle')
-            console.log(newGuesses)
             return newGuesses
         })
         setTurn((prevTurn) => { return prevTurn+1 })

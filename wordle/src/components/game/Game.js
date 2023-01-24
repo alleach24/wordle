@@ -4,7 +4,7 @@ import Grid from './Grid'
 import Keyboard from './Keyboard'
 import GameEndModal from './GameEndModal'
 
-export default function Game({ solution }) {
+export default function Game({ solution, setGuesses }) {
     const { currentGuess, handleKeyup, guesses, turn, isCorrect, resetWordle, usedKeys } = useWordle(solution)
     const [showModal, setShowModal] = useState(false)
     const [exitModal, setExitModal] = useState(false)
@@ -47,10 +47,10 @@ export default function Game({ solution }) {
         setShowModal(false)
     }
 
+
     useEffect(() => {
-        console.log('Game')
-        console.log(guesses)
-    }, [guesses])
+        setGuesses(guesses)
+    }, [guesses, setGuesses])
 
 
   return (
