@@ -4,7 +4,6 @@ import Game from './Game'
 
 export default function Wordle() {
     const { getRandomSolution, verifyCustomSolution } = useGetSolution()
-    // const { resetWordle } = useWordle('')
 
     const [solution, setSolution] = useState(null)
 
@@ -33,7 +32,7 @@ export default function Wordle() {
         <div>
             <h2>Wordle</h2>
             {/* take away the button working on pressing enter */}
-            <button onClick={setupRandomGame}>New Game</button>
+            <button onClick={setupRandomGame}>Random Game</button>
             <button onClick={setupCustomGame}>Custom Game</button>
             {solution && <Game solution={solution} />}
         </div>
