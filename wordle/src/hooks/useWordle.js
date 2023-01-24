@@ -13,7 +13,7 @@ const useWordle = (solution) => {
     const handleKeyup = ({ key }) => {
         if (key === 'Enter') {
             if (turn > 5) {
-                console.log("No more guesses left")
+                // console.log("No more guesses left")
                 return
             }
             let submittedGuess = handleSubmit()
@@ -34,7 +34,7 @@ const useWordle = (solution) => {
 
 
     const formatGuess = (guess) => {
-        console.log('formatting the guess - ' + guess)
+        // console.log('formatting the guess - ' + guess)
 
         let solutionArray = [...solution]
         let formattedGuess = [...guess].map((letter) => { 
@@ -65,6 +65,8 @@ const useWordle = (solution) => {
         setGuesses((prevGuesses) => {
             let newGuesses = [...prevGuesses]
             newGuesses[turn] = formattedGuess
+            console.log('useWordle')
+            console.log(newGuesses)
             return newGuesses
         })
         setTurn((prevTurn) => { return prevTurn+1 })
@@ -91,7 +93,7 @@ const useWordle = (solution) => {
 
 
     const resetWordle = () => {
-        console.log("resetting Wordle")
+        // console.log("resetting Wordle")
         setTurn(0)
         setGuesses([...Array(6)])
         setIsCorrect(false)

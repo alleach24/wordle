@@ -18,13 +18,13 @@ code {
   border: 5px solid green;
   text-align: center;
 }
-.App-containers {
+.Wordle-containers {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   border: 5px solid aqua;
 }
-.App-container {
+.Wordle-container {
   border: 5px solid magenta;
   width: 85%;
   margin: 20px;

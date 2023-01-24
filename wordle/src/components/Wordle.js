@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import useGetSolution from '../../hooks/useGetSolution'
-import Game from './Game'
+import useGetSolution from '../hooks/useGetSolution'
+import Game from './game/Game'
+import Optimizer from './optimizer/Optimizer'
 
 export default function Wordle() {
     const { getRandomSolution, verifyCustomSolution } = useGetSolution()
@@ -30,11 +31,18 @@ export default function Wordle() {
 
     return (
         <div>
-            <h2>Wordle</h2>
-            {/* take away the button working on pressing enter */}
-            <button onClick={setupRandomGame}>Random Game</button>
-            <button onClick={setupCustomGame}>Custom Game</button>
-            {solution && <Game solution={solution} />}
+            <div className="Wordle-containers">
+                <div className="Wordle-container">
+                    <h2>Wordle</h2>
+                    {/* take away the button working on pressing enter */}
+                    <button onClick={setupRandomGame}>Random Game</button>
+                    <button onClick={setupCustomGame}>Custom Game</button>
+                    {solution && <Game solution={solution} />}
+                </div>
+                <div className="Wordle-container">
+                    <Optimizer solution={solution} />
+                </div>
+            </div>
         </div>
     )
 }

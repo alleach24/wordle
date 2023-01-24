@@ -1,5 +1,4 @@
-import Wordle from "./components/game/Wordle.js"
-import Optimizer from "./components/optimizer/Optimizer.js";
+import Wordle from "./components/Wordle.js"
 
 function App() {
   return (
@@ -7,13 +6,8 @@ function App() {
       <header className="App-header">
         <h1>Wordle Optimizer</h1>
       </header>
-      <div className="App-containers">
-        <div className="App-container">
+      <div className="App-container">
           <Wordle />
-        </div>
-        <div className="App-container">
-          <Optimizer />
-        </div>
       </div>
     </div>
   );

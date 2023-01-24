@@ -2,6 +2,7 @@ import { useState } from "react"
 import { GUESSWORDS } from "../data/guess_words.js"
 
 const useKeys = () => {
+
     const [currentGuess, setCurrentGuess] = useState('')
 
     const handleKeyboardKey = (key) => {
@@ -25,7 +26,8 @@ const useKeys = () => {
             alert('Invalid guess')
             return ''
         }
-        console.log('submitted the guess - ' + currentGuess)
+        // console.log('submitted the guess - ' + currentGuess)
+
         return currentGuess
     }
 
