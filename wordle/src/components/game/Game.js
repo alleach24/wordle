@@ -47,6 +47,11 @@ export default function Game({ solution }) {
         setShowModal(false)
     }
 
+    useEffect(() => {
+        console.log('Game')
+        console.log(guesses)
+    }, [guesses])
+
 
   return (
     <div key={solution}>

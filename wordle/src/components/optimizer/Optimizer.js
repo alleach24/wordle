@@ -5,22 +5,15 @@ import Analysis from "./Analysis"
 import useWordle from "../../hooks/useWordle"
 
 export default function Optimizer({ solution }) {
-    // const {guesses} = useWordle(solution)
+    const { guesses } = useWordle(solution)  
 
     const [showPossibleSolutions, setShowPossibleSolutions] = useState(false)
     const [showOptimalGuess, setShowOptimalGuess] = useState(false)
     const [showAnalysis, setShowAnalysis] = useState(false)
-    const [guesses, setGuesses] = useState(useWordle(solution))
 
-    
 
-    useEffect(() => {
-        setShowPossibleSolutions(false)
-        setShowOptimalGuess(false)
-        setShowAnalysis(false)
-        console.log('Optimizer')
-        console.log(guesses)
-    }, [guesses])
+    console.log('Optimizer')
+    console.log(guesses)
 
     const clearDisplay = () => {
         setShowPossibleSolutions(false)
