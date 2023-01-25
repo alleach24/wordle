@@ -50,7 +50,15 @@ What if the same board has 10 people with glasses and 10 people without glasses.
 
 On average, you are reducing the possible solutions by 10 (50%x10 + 50%x10).
 
-We can see from this that guessing "does the person have glasses" is a better guess than "does the person have red har" because the average amount of solutions eliminated by the former guess is 10, while the average amount of solutions eliminated by the latter guess is 1.9.
+We can see from this that guessing "does the person have glasses" is a better guess than "does the person have red hair" because the average amount of solutions eliminated by the former guess is 10, while the average amount of solutions eliminated by the latter guess is 1.9.
 
 
 Wordle is more complicated because the information gathered isn't a 'yes-no' outcome. There are 5 datum that each can have 3 outcomes (5 different letters that could be gray, green, or yellow). However, the average number of solutions eliminated can still be calculated using the same equations. 
+
+--- 
+
+### FAQs
+
+== Where did you get the word banks? == Before Wordle was bought by the New York Times, both the solutions word bank and the guesses word bank could be found by inspecting the website's source code. NYT has since updated the lists to take out a few words, but most of the words remain the same. This program uses the original words.
+== What's the difference between the guess word bank and the solution word bank? == The guess word bank contains about 13,000 words that are valid Wordle guesses. In contrast, the solutions word bank only contains about 3,000 words that are potential Wordle solutions. The difference of 10,000 words is to account for obscure words. For example, 'pzazz' is a valid English dictionary word ([really!](https://www.dictionary.com/browse/pzazz)), however the creators of the game recognized that nobody would guess 'pzazz' as a solution word. So they curated the list of 13,000 valid English dictionary 5-letter words down to about 3,000 words that people actually recognize.
+== I think your methodology of calculating the optimal guess is wrong. == That's not a question, but I'll answer anyways. Yes I do believe that an expert statistician probably would arrive at a different methodology for calculating the optimal guess than I did. I accept that my solution is likely not *actually* optimal. However, it is very close, and it is sufficient for the purposes of this program. 
