@@ -4,11 +4,14 @@ import { SOLUTIONWORDS } from "../data/solution_words"
 const useOptimizer = ( {solution, guesses, possibleSolutionsList } ) => {
 
 
-    const formatGuessArray = (guesses) => {
+    const formatGuessArray = (guesses, previous) => {
         let i=5
         while (guesses[i] === undefined) {
             i-=1
         } 
+        // if (previous) {
+        //     i-=1
+        // }
         let guessArray = []
         guesses[i].forEach((letterDict, index) => {
             guessArray[index] = letterDict.letter
@@ -114,14 +117,45 @@ const useOptimizer = ( {solution, guesses, possibleSolutionsList } ) => {
     }
 
 
+    function guessAnalysis(guesses, previousPossibleSolutions) {
+        if (previousPossibleSolutions.length === 0) {
+            previousPossibleSolutions = SOLUTIONWORDS
+        }
+        let previousGuess = formatGuessArray(guesses, true)
+
+        let stdDevs = {}
     
+        let previousGuessStdDev = calculateStandardDeviation(evaluateWord([...previousGuess], previousPossibleSolutions))
+        console.log("previous guess stddev " + previousGuessStdDev)
+        let betterGuesses = 0
+        let worseGuesses = 0
+    
+        GUESSWORDS.forEach(guess => {
+            let newGuessStdDev = calculateStandardDeviation(evaluateWord([...guess],previousPossibleSolutions))
+            stdDevs[guess] = newGuessStdDev
+            // console.log(newGuessStdDev)
+            if (newGuessStdDev < previousGuessStdDev) {
+                betterGuesses += 1
+            } else if (newGuessStdDev > previousGuessStdDev) {
+                worseGuesses += 1
+            }
+        })
+    
+        let minStdDev = Math.min(...Object.values(stdDevs))
+        let bestGuesses = Object.keys(stdDevs).filter(word => stdDevs[word] === minStdDev)
+    
+        let percentile = worseGuesses / GUESSWORDS.length * 100
+    
+        return [percentile, bestGuesses]
+    }
 
 
 
 
 
 
-    return { formatGuessArray, buildColorCode, findOptimalWords }
+
+    return { formatGuessArray, buildColorCode, findOptimalWords, guessAnalysis }
 }
 
 export default useOptimizer

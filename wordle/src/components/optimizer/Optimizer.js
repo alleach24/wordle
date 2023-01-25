@@ -14,8 +14,10 @@ export default function Optimizer({ solution, guesses }) {
     const [showOptimalGuess, setShowOptimalGuess] = useState(false)
     const [showAnalysis, setShowAnalysis] = useState(false)
     const [possibleSolutions, setPossibleSolutions] = useState([])
+    const [previousPossibleSolutions, setPreviousPossibleSolutions] = useState([])
 
     useEffect(() => {
+        setPreviousPossibleSolutions(possibleSolutions)
         setPossibleSolutions(determinePossibleSolutions(guesses))
         // eslint-disable-next-line
     }, [guesses])
@@ -68,7 +70,7 @@ export default function Optimizer({ solution, guesses }) {
 
             {showPossibleSolutions && <PossibleSolutions possibleSolutions={possibleSolutions}/>}
             {showOptimalGuess && <OptimalGuess solution={solution} guesses={guesses} possibleSolutions={possibleSolutions}/>}
-            {showAnalysis && <Analysis solution={solution}/>}
+            {showAnalysis && <Analysis solution={solution} guesses={guesses} possibleSolutions={previousPossibleSolutions}/>}
         </div>
     )
 }
