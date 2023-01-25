@@ -28,6 +28,7 @@ On the left side of the screen is the game Wordle just like in the New York Time
 You can create a random game in which the solution word will be randomly selected.
 Or, you can create a custom game in which you pick the solution word. This mode enables you to analyze guesses for a particular solution. For example, if you already completed today's New York Times Wordle puzzle, you can make a custom game with that same solution and the analyze the guesses you made.
 
+#### Wordle optimizer
 On the right side of the screen is the Optimizer. The Optimizer has 3 main functions:
 - Reveal possible solutions = this function shows a list of all possible solutions based on the information you have from your guesses.
 - Reveal optimal guesses = this function determines the optimal guess to make next given the possible solutions
