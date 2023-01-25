@@ -34,14 +34,14 @@ export default function Wordle() {
     return (
         <div>
             <div className="Wordle-containers">
-                <div className="Wordle-container">
+                <div className="Wordle-container" id="Game">
                     <h2>Wordle</h2>
                     {/* take away the button working on pressing enter */}
                     <button onClick={setupRandomGame}>Random Game</button>
                     <button onClick={setupCustomGame}>Custom Game</button>
                     {solution && <Game solution={solution} setGuesses={setGuesses}/>}
                 </div>
-                <div className="Wordle-container">
+                <div className="Wordle-container" id="Optimizer">
                     <Optimizer solution={solution} guesses={guesses}/>
                 </div>
             </div>
