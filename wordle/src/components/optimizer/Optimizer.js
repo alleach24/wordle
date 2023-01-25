@@ -4,8 +4,11 @@ import OptimalGuess from "./OptimalGuess"
 import Analysis from "./Analysis"
 // import useOptimizer from "../../hooks/useOptimizer"
 import { SOLUTIONWORDS } from "../../data/solution_words"
+import useOptimizer from "../../hooks/useOptimizer"
 
 export default function Optimizer({ solution, guesses }) {
+
+    const { formatGuessArray, buildColorCode } = useOptimizer({ solution, guesses })
 
     const [showPossibleSolutions, setShowPossibleSolutions] = useState(false)
     const [showOptimalGuess, setShowOptimalGuess] = useState(false)
@@ -40,44 +43,10 @@ export default function Optimizer({ solution, guesses }) {
         
     }
 
-    const formatGuessArray = (guesses) => {
-        let i=5
-        while (guesses[i] === undefined) {
-            i-=1
-        } 
-        let guessArray = []
-        guesses[i].forEach((letterDict, index) => {
-            guessArray[index] = letterDict.letter
-        })
-        return guessArray
-    }
 
 
-    const buildColorCode = (guessArray, solution) => {
-        // green = 2
-        // yellow = 1
-        // gray = 0
 
-        let colorCodeArr = ['0','0','0','0','0']
-        let solutionArray = solution.split('')
 
-        // find any green letters
-        guessArray.forEach((letter, index) => {
-            if (solutionArray[index] === letter) {
-                colorCodeArr[index] = '2'
-                solutionArray[index] = null
-            }
-        })
-
-        // find any yellow letters 
-        guessArray.forEach((letter, index) => {
-            if (solutionArray.includes(letter) && colorCodeArr[index] !== '2') {
-                colorCodeArr[index] = '1'
-                solutionArray[solutionArray.indexOf(letter)] = null
-            }
-        })
-        return colorCodeArr.join('')
-    }
 
 
     
@@ -98,7 +67,7 @@ export default function Optimizer({ solution, guesses }) {
             <p>Solution = {solution}</p>
 
             {showPossibleSolutions && <PossibleSolutions possibleSolutions={possibleSolutions}/>}
-            {showOptimalGuess && <OptimalGuess solution={solution}/>}
+            {showOptimalGuess && <OptimalGuess solution={solution} guesses={guesses} possibleSolutions={possibleSolutions}/>}
             {showAnalysis && <Analysis solution={solution}/>}
         </div>
     )
