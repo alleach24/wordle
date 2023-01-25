@@ -14,7 +14,6 @@ export default function Optimizer({ solution, guesses }) {
 
     useEffect(() => {
         setPossibleSolutions(determinePossibleSolutions(guesses))
-        // console.log(possibleSolutions)
         // eslint-disable-next-line
     }, [guesses])
 
@@ -28,23 +27,56 @@ export default function Optimizer({ solution, guesses }) {
         }
         console.log("determining possible solutions")
         let newPossibleSolutions = []
-
-        let colorCode = getColorCode(guesses)
-
-        console.log('colorcode ' + colorCode)
+        let guess = formatGuessArray(guesses)
+        let colorCode = buildColorCode(guess, solution)
+        
+        possibleSolutions.forEach((word) => {
+            let testColorCode = buildColorCode(guess, word)
+            if (testColorCode === colorCode) {
+                newPossibleSolutions.push(word)
+            }
+        })
+        return newPossibleSolutions
         
     }
 
-    const getColorCode = (guesses) => {
+    const formatGuessArray = (guesses) => {
         let i=5
         while (guesses[i] === undefined) {
             i-=1
         } 
-        let colorCode = []
+        let guessArray = []
         guesses[i].forEach((letterDict, index) => {
-            colorCode[index] = letterDict.color
+            guessArray[index] = letterDict.letter
         })
-        return colorCode
+        return guessArray
+    }
+
+
+    const buildColorCode = (guessArray, solution) => {
+        // green = 2
+        // yellow = 1
+        // gray = 0
+
+        let colorCodeArr = ['0','0','0','0','0']
+        let solutionArray = solution.split('')
+
+        // find any green letters
+        guessArray.forEach((letter, index) => {
+            if (solutionArray[index] === letter) {
+                colorCodeArr[index] = '2'
+                solutionArray[index] = null
+            }
+        })
+
+        // find any yellow letters 
+        guessArray.forEach((letter, index) => {
+            if (solutionArray.includes(letter) && colorCodeArr[index] !== '2') {
+                colorCodeArr[index] = '1'
+                solutionArray[solutionArray.indexOf(letter)] = null
+            }
+        })
+        return colorCodeArr.join('')
     }
 
 
@@ -65,7 +97,7 @@ export default function Optimizer({ solution, guesses }) {
             <button onClick={clearDisplay}>Clear</button>
             <p>Solution = {solution}</p>
 
-            {showPossibleSolutions && <PossibleSolutions solution={solution} guesses={guesses} possibleSolutions={possibleSolutions}/>}
+            {showPossibleSolutions && <PossibleSolutions possibleSolutions={possibleSolutions}/>}
             {showOptimalGuess && <OptimalGuess solution={solution}/>}
             {showAnalysis && <Analysis solution={solution}/>}
         </div>
