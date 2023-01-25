@@ -35,13 +35,9 @@ On the right side of the screen is the Optimizer. The Optimizer has 3 main funct
 - Reveal guess analysis = this function analyzes your previous guess by calculating it's percentile for how optimal of a guess it was
 
 ### Methodology
-The hardest part of this project was determining how to calculate the "optimal guess".
+The hardest part of this project was determining how to define and calculate the "optimal guess".
 
-The goal of Wordle is to find the solution word.
-
-The goal of a guess is to reduce the list of possible solution words.
-
-Therefore, the optimal guess is the guess that, on average, reduces the largest amount of possible solution words.
+I defined the optimal guess to mean the guess that, on average, eliminates the most possible solution words. In theory, this will result in the average lowest number of guesses needed to find any solution word.
 
 
 To explain the methodology I selected, I'll start by explaining a simpler game - Guess Who (learn how to play [here](https://www.ultraboardgames.com/guess-who/game-rules.php))
