@@ -64,3 +64,16 @@ Wordle is more complicated because the information gathered isn't a 'yes-no' out
 **What's the difference between the guess word bank and the solution word bank?** The guess word bank contains about 13,000 words that are valid Wordle guesses. In contrast, the solutions word bank only contains about 3,000 words that are potential Wordle solutions. The difference of 10,000 words is to account for obscure words. For example, 'pzazz' is a valid English dictionary word ([really!](https://www.dictionary.com/browse/pzazz)), however the creators of the game recognized that nobody would guess 'pzazz' as a solution word. So they curated the list of 13,000 valid English dictionary 5-letter words down to about 3,000 words that people actually recognize.
 
 **I think your methodology of calculating the optimal guess is wrong.** That's not a question, but I'll answer anyways. Yes I do believe that an expert statistician probably would arrive at a different methodology for calculating the optimal guess than I did. I accept that my solution is likely not *actually* optimal. However, it is very close, and it is sufficient for the purposes of this program. 
+
+---
+
+### To do:
+This project is not yet fully completed, but it is in a working state.
+
+Future things I need to fix:
+- adding a loading image to indicate when the program is running calculations
+- try to make the program faster, for example by not recalculating the optimal guesses on page re-render 
+- resetting the optimizer section on the creation of new games
+- testing for weird behavior
+
+If you have suggestions for features to add, bugs to fix, or improvements to make, let me know!
