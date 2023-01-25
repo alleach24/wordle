@@ -3,6 +3,8 @@
 
 ### This Wordle Optimizer allows users to analyze their Wordle gameplay by calculating optimal guesses based on known information.
 
+---
+
 ### Technologies:
 - React
 - Javascript
@@ -15,6 +17,9 @@
   - npm i
   - npm run start
   The program will automatically launch a browser with the program running.
+  
+
+---
   
   
 ### Functions
@@ -31,15 +36,24 @@ On the right side of the screen is the Optimizer. The Optimizer has 3 main funct
 ### Methodology
 The hardest part of this project was determining how to calculate the "optimal guess".
 
-The goal of the game is to find the solution word.
+The goal of Wordle is to find the solution word.
+
 The goal of a guess is to reduce the list of possible solution words.
+
 Therefore, the optimal guess is the guess that, on average, reduces the largest amount of possible solution words.
 
-To explain the methodology I selected, I'll start by explaining a simpler game - Guess Who (learn how to play at https://www.ultraboardgames.com/guess-who/game-rules.php)
-Lets say the Guess Who board has 19 people with black hair and 1 person with red hair. If you said "does the person have red hair", then 95% of the time the answer would be 'no' and 5% of the time the answer would be 'yes'. So in 95% of cases, the information you've gathered reduces possible solutions by 1. In 5% of cases, you automatically know the answer. 
+
+To explain the methodology I selected, I'll start by explaining a simpler game - Guess Who (learn how to play [here](https://www.ultraboardgames.com/guess-who/game-rules.php))
+
+Lets say the Guess Who board has 19 people with black hair and 1 person with red hair. If you said "does the person have red hair", then 95% of the time the answer would be 'no' and 5% of the time the answer would be 'yes'. So in 95% of cases, the information you've gathered reduces possible solutions by 1. In 5% of cases, you've reduced the possible solutions by 19. 
+
 On average, you are reducing the possible solutions by 1.9 (95%x1 + 5%x19).
 
 What if the same board has 10 people with glasses and 10 people without glasses. If you said "does the person have glasses", then 50% of the time the answer would be 'no' and 50% of the time the answer would be 'yes'. In both cases, the information you've gathered reduces possible solutions by 10. 
+
 On average, you are reducing the possible solutions by 10 (50%x10 + 50%x10).
 
-Wordle is more complicated because the information gathered isn't a 'yes-no' outcome. There are 5 datum that each can have 3 outcomes (5 different letters that could be gray, green, or yellow). However, the average number of solutions eliminated can still be calculated. 
+We can see from this that guessing "does the person have glasses" is a better guess than "does the person have red har" because the average amount of solutions eliminated by the former guess is 10, while the average amount of solutions eliminated by the latter guess is 1.9.
+
+
+Wordle is more complicated because the information gathered isn't a 'yes-no' outcome. There are 5 datum that each can have 3 outcomes (5 different letters that could be gray, green, or yellow). However, the average number of solutions eliminated can still be calculated using the same equations. 
