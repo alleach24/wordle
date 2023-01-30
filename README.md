@@ -14,8 +14,8 @@
 1. Download the github repo
 2. From your preferred IDE, open the base folder.
 3. In the command line, run the following lines:
---npm i
---npm run start
+---npm i
+---npm run start
   
   The program will automatically launch a browser with the program running.
   
